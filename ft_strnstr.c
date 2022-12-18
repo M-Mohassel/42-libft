@@ -6,7 +6,7 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 18:47:41 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/17 19:51:36 by misi-moh         ###   ########.fr       */
+/*   Updated: 2022/12/18 11:35:33 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 char	*ft_strnstr(const char *big, const char *small, size_t len)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
-	if (!small || !small[0])
+	if (!small[0])
 		return ((char *)(big));
-	while (i < len)
+	while (big[i] && i < len)
 	{
 		while (big[i + j] == small[j])
 		{
@@ -34,3 +34,6 @@ char	*ft_strnstr(const char *big, const char *small, size_t len)
 	}
 	return (NULL);
 }
+
+	//if (!big || !small)
+		//return (NULL);

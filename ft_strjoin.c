@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/17 12:39:00 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/18 12:52:56 by misi-moh         ###   ########.fr       */
+/*   Created: 2022/12/18 18:09:18 by misi-moh          #+#    #+#             */
+/*   Updated: 2022/12/18 18:13:20 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	char	*d;
-	char	*s;
+	char	*str;
+	size_t	i;
+	size_t	j;
 
-	d = dest;
-	s = src;
-	i = 0;
-	if (!dest && !src)
+	str = (char *)malloc(sizeof(*s1) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
 		return (NULL);
-	while (i < n)
+	i = 0;
+	j = 0;
+	while (s1[i])
 	{
-		d[i] = s[i];
+		str[j++] = s1[i];
 		i++;
 	}
-	return (d);
+	i = 0;
+	while (s2[i])
+	{
+		str[j++] = s2[i];
+		i++;
+	}
+	str[j] = 0;
+	return (str);
 }

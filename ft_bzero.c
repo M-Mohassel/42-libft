@@ -6,7 +6,7 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 19:35:40 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/15 20:02:23 by misi-moh         ###   ########.fr       */
+/*   Updated: 2022/12/18 13:16:50 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char	*a;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	a = s;
 	while (i < n)
 	{
-		a[i] = 0;
+		*(char *)(s + i) = 0;
 		i++;
 	}
 }

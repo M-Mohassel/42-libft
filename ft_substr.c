@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/17 12:39:00 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/18 12:52:56 by misi-moh         ###   ########.fr       */
+/*   Created: 2022/12/18 17:41:07 by misi-moh          #+#    #+#             */
+/*   Updated: 2022/12/18 17:50:40 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_substr(char const *s, unsigned int start,
+size_t len)
 {
-	int		i;
-	char	*d;
-	char	*s;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	d = dest;
-	s = src;
-	i = 0;
-	if (!dest && !src)
+	str = (char *)malloc(sizeof(*s) * (ft_strlen(s) + 1));
+	if (!str)
 		return (NULL);
-	while (i < n)
+	i = 0;
+	j = 0;
+	while (s[i])
 	{
-		d[i] = s[i];
+		if (i >= start && j < len)
+		{
+			str[j] = s[i];
+			j++;
+		}
 		i++;
 	}
-	return (d);
+	str[j] = 0;
+	return (str);
 }
