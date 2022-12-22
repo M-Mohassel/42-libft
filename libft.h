@@ -6,7 +6,7 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:47:09 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/18 18:16:02 by misi-moh         ###   ########.fr       */
+/*   Updated: 2022/12/22 20:01:52 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strtrim(char const *s1, char const *set);
 size_t	ft_strlcpy(char *dest, char *src, unsigned int size);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 void	*ft_memchr(const void *s, int c, size_t n);
