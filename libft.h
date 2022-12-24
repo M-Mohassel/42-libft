@@ -6,7 +6,7 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:47:09 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/22 20:01:52 by misi-moh         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:26:11 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include<stdlib.h>
 # include<string.h>
+# include<stdio.h>
 
 int		ft_isdigit(int c);
 int		ft_isalpha(int c);
@@ -40,6 +41,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strtrim(char const *s1, char const *set);
 size_t	ft_strlcpy(char *dest, char *src, unsigned int size);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
+char	**ft_split(char const *s, char c);
 void	*ft_memchr(const void *s, int c, size_t n);
 char	*ft_strdup(const char *s);
 char	*ft_itoa(int n);
