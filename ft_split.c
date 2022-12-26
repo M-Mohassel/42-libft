@@ -6,7 +6,7 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:32:16 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/24 18:19:55 by misi-moh         ###   ########.fr       */
+/*   Updated: 2022/12/25 14:37:26 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,47 @@
 
 static size_t	size_alloc(char const *s, char c)
 {
-	size_t	i;
-	size_t	total;
+	size_t	ret;
 
-	total = 0;
-	i = 0;
-	while (s[i])
+	ret = 0;
+	while (*s)
 	{
-		if (s[i] != c)
+		if (*s != c)
 		{
-			total++;
-			while (s[i] && s[i] != c)
-				i++;
+			++ret;
+			while (*s && *s != c)
+				++s;
 		}
 		else
-			i++;
+			++s;
 	}
-	return (total);
+	return (ret);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char *s, char c)
 {
+	char	**ret;
 	size_t	i;
-	size_t	j;
 	size_t	len;
-	size_t	a;
-	char	**str;
 
-	str = (char **)malloc(sizeof(char *) * (size_alloc(s, c) + 1));
-	if (!str)
-		return (NULL);
+	if (!s)
+		return (0);
 	i = 0;
-	j = 0;
-	while (s[i])
+	ret = malloc(sizeof(char *) * (size_alloc(s, c) + 1));
+	if (!ret)
+		return (0);
+	while (*s)
 	{
-		if (s[i] != c)
+		if (*s != c)
 		{
 			len = 0;
-			a = i;
-			while (s[i] && s[i] != c && ++len)
-				i++;
-			str[j++] = ft_substr(s, a, len);
+			while (*s && *s != c && ++len)
+				++s;
+			ret[i++] = ft_substr(s - len, 0, len);
 		}
 		else
-			i++;
+			++s;
 	}
-	str[i] = 0;
-	return (str);
+	ret[i] = 0;
+	return (ret);
 }

@@ -6,59 +6,46 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:01:41 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/18 17:33:11 by misi-moh         ###   ########.fr       */
+/*   Updated: 2022/12/25 16:19:23 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_abs(int nbr)
+int	ft_numlen(int n, int base)
 {
-	if (nbr < 0)
-		return (nbr = -nbr);
-	else
-		return (nbr);
-}
+	int	count;
 
-static void	ft_strrev(char *str)
-{
-	size_t	length;
-	size_t	i;
-	char	tmp;
-
-	length = ft_strlen(str);
-	i = 0;
-	while (i < length / 2)
-	{
-		tmp = str[i];
-		str[i] = str[length - i - 1];
-		str[length - i - 1] = tmp;
-		i++;
-	}
+	count = 0;
+	if (n <= 0)
+		count++;
+	while (n && ++count)
+		n /= base;
+	return (count);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		is_neg;
-	size_t	length;
+	int			len;
+	char		*ret;
+	const char	*digits = "0123456789";
 
-	is_neg = 0;
-	if (n < 0)
-		is_neg = 1;
-	str = ft_calloc(11 + is_neg, sizeof(*str));
-	if (!str)
-		return (NULL);
+	len = ft_numlen(n, 10);
+	ret = malloc(sizeof(char) * (len + 1));
+	if (!ret)
+		return (0);
+	ret[len] = 0;
 	if (n == 0)
-		str[0] = '0';
-	length = 0;
-	while (n != 0)
+		ret[0] = '0';
+	if (n < 0)
+		ret[0] = '-';
+	while (n)
 	{
-		str[length++] = '0' + ft_abs(n % 10);
-		n = (n / 10);
+		if (n > 0)
+			ret[--len] = digits[n % 10];
+		else
+			ret[--len] = digits[n % 10 * -1];
+		n /= 10;
 	}
-	if (is_neg)
-		str[length] = '-';
-	ft_strrev(str);
-	return (str);
+	return (ret);
 }
