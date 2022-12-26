@@ -6,7 +6,7 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 16:25:52 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/25 16:29:27 by misi-moh         ###   ########.fr       */
+/*   Updated: 2022/12/26 18:01:41 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,5 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (!s)
-		return (0);
 	write(fd, s, ft_strlen(s));
 }
