@@ -6,7 +6,7 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 16:07:28 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/25 16:18:09 by misi-moh         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:48:11 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 
 	i = 0;
 	if (!s)
-		return (0);
+		return ;
 	while (s[i])
 	{
 		f(i, &s[i]);

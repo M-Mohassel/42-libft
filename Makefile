@@ -6,7 +6,7 @@
 #    By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 17:47:36 by misi-moh          #+#    #+#              #
-#    Updated: 2022/12/26 16:59:59 by misi-moh         ###   ########.fr        #
+#    Updated: 2022/12/30 16:00:01 by misi-moh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ BONUS	=	ft_lstnew.c			ft_lstadd_front.c	ft_lstsize.c	ft_lstlast.c \
 
 BONUS_OBJS	= $(BONUS:.c=.o)
 
-CC = gcc
+CC = cc
 RM = rm -f
 Cflags = -Wall -Werror -Wextra -I.
 

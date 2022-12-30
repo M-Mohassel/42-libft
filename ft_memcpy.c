@@ -6,7 +6,7 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 12:39:00 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/22 18:25:31 by misi-moh         ###   ########.fr       */
+/*   Updated: 2022/12/30 17:17:28 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char	*s;
 
 	d = dest;
-	s = src;
+	s = (char *)src;
 	i = 0;
 	if (!dest && !src)
 		return (NULL);
