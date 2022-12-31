@@ -6,7 +6,7 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 18:00:26 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/17 18:19:50 by misi-moh         ###   ########.fr       */
+/*   Updated: 2022/12/31 13:04:52 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
 	while (i < n)

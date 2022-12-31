@@ -6,7 +6,7 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 15:57:27 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/26 17:29:44 by misi-moh         ###   ########.fr       */
+/*   Updated: 2022/12/31 13:22:53 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*tmp;
-	t_list	**ret;
+	t_list	*ret;
 
 	ret = 0;
 	while (lst)
