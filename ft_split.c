@@ -6,55 +6,87 @@
 /*   By: misi-moh <misi-moh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:32:16 by misi-moh          #+#    #+#             */
-/*   Updated: 2022/12/25 14:37:26 by misi-moh         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:57:46 by misi-moh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-static size_t	size_alloc(char const *s, char c)
+static char	*trim_string(char *s, char c)
 {
-	size_t	ret;
-
-	ret = 0;
-	while (*s)
-	{
-		if (*s != c)
-		{
-			++ret;
-			while (*s && *s != c)
-				++s;
-		}
-		else
-			++s;
-	}
-	return (ret);
+	while (s[0] == c && c)
+		s++;
+	return (s);
 }
 
-char	**ft_split(const char *s, char c)
+static int	get_words(char const *s, char c)
 {
-	char	**ret;
-	size_t	i;
-	size_t	len;
+	int	i;
+	int	wc;
+
+	i = -1;
+	wc = 0;
+	if (!s || !s[0])
+		return (0);
+	while (s[++i])
+	{
+		if (s[i] != c)
+		{
+			while (s[i] != c && s[i])
+				i++;
+		wc++;
+		i--;
+		}
+	}
+	return (wc);
+}
+
+static int	get_letters(char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != c && s[i])
+		i++;
+	return (i);
+}
+
+static char	**free_rest(char **str, int index)
+{
+	if (!index)
+		free(str);
+	else
+		while (index >= 0)
+			free(str[index--]);
+	free(str);
+	return (NULL);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**str;
+	int		index;
+	int		lc;
 
 	if (!s)
-		return (0);
-	i = 0;
-	ret = malloc(sizeof(char *) * (size_alloc(s, c) + 1));
-	if (!ret)
-		return (0);
-	while (*s)
 	{
-		if (*s != c)
-		{
-			len = 0;
-			while (*s && *s != c && ++len)
-				++s;
-			ret[i++] = ft_substr(s - len, 0, len);
-		}
-		else
-			++s;
+		return (NULL);
 	}
-	ret[i] = 0;
-	return (ret);
+	str = (char **)malloc((get_words((char *)s, c) + 1) * sizeof(char *));
+	if (!str)
+		return (free_rest(str, 0));
+	if (s[0])
+		s = trim_string((char *)s, c);
+	index = 0;
+	while (ft_strlen(s))
+	{
+		lc = get_letters((char *)s, c);
+		str[index] = (char *)malloc((lc + 1) * sizeof(char));
+		if (!str[index])
+			return (free_rest(str, index));
+		ft_strlcpy(str[index++], s, lc + 1);
+		s = trim_string((char *)s + lc, c);
+	}
+	str[index] = NULL;
+	return (str);
 }
